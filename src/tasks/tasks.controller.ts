@@ -10,17 +10,11 @@ import { TaskStatus } from './task-status.enum';
 export class TasksController {
     constructor(private taskService: TasksService) { }
 
-    // @Get()
-    // getTasks(@Query(ValidationPipe) filterDto: GetTasksFilterDto): Task[] {
-    //      console.log(filterDto);
-    //      console.log(`Object.keys(filterDto).length`,Object.keys(filterDto).length)
-    //     if (Object.keys(filterDto).length) {
-    //         return this.taskService.getTasksWithFilters(filterDto);
-    //     } else {
-    //         return this.taskService.getAllTasks();
-    //     }
+    @Get()
+    getTasks(@Query(ValidationPipe) filterDto: GetTasksFilterDto): Promise<Task[]> {
+        return this.taskService.getTasks(filterDto);
         
-    // }
+    }
 
     @Get('/:id')
     getTaskById(@Param('id', ParseIntPipe) id: number): Promise<Task> {
@@ -41,7 +35,7 @@ export class TasksController {
     @Patch('/:id/status')
     updateTaskStatus(@Param('id', ParseIntPipe) id: number,
         @Body('status', TaskStatusValidationPipe) status: TaskStatus): Promise<Task> {
-            console.log(`In Controlle Task number ${id} status ${status}`)   
+        console.log(`In Controller Task number ${id} status ${status}`)   
         return this.taskService.updateTaskStatus(id, status);
     }
 
