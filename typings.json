@@ -1,5 +1,6 @@
 {
   "globalDependencies": {
+    "passport": "registry:dt/passport#0.3.0+20170207191958",
     "uuid": "registry:dt/uuid#3.3.0+20160728152600"
   }
 }
