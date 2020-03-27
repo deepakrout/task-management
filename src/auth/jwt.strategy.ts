@@ -9,7 +9,8 @@ import { User } from './user.entity';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor(
-        @InjectRepository(UserRepository) userRepository: UserRepository
+        @InjectRepository(UserRepository) 
+        private userRepository: UserRepository
     ){
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -17,15 +18,15 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         })
     }
 
-    async validate(payload: JwtPayload): Promise<User> {
+    async validate(payload: JwtPayload): Promise<JwtPayload> {
         const { username } = payload;
         const user = await this.userRepository.findOne({ username })
-        console.log(`User`, user)
+        console.log(`User`, user.username)
         if( !user ) {
             throw new UnauthorizedException();
         }
 
-        return user;
+        return { username: user.username };
     }
 
 }
