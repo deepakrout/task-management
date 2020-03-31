@@ -3,7 +3,9 @@ import { User } from "./user.entity";
 import { AuthCredentialDto } from "./dto/auth-credential.dto";
 import { ConflictException, InternalServerErrorException } from "@nestjs/common";
 import * as bcrypt from 'bcrypt';
-
+/**
+ * User repository 
+ */
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
     async signUp(authCredentialDto: AuthCredentialDto): Promise<void> {
