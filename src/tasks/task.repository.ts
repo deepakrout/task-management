@@ -5,6 +5,9 @@ import { TaskStatus } from "./task-status.enum";
 import { GetTasksFilterDto } from "./dto/get-tasks-filter.dto";
 import { User } from "src/auth/user.entity";
 
+/**
+ * Task repository to handle low level taks CRUD operations
+ */
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
     async createTask(
