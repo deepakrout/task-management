@@ -2,6 +2,10 @@ import { Controller, Post, Body, ValidationPipe } from '@nestjs/common';
 import { AuthCredentialDto } from './dto/auth-credential.dto';
 import { AuthService } from './auth.service';
 
+/**
+ * Auth Controller
+ * Date: 03/20/2020
+ */
 @Controller('auth')
 export class AuthController {
 
