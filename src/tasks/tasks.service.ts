@@ -6,6 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
 import { TaskStatus } from './task-status.enum';
 import { User } from 'src/auth/user.entity';
+import { GetUser } from 'src/auth/get-user.decorator';
 
 @Injectable()
 export class TasksService {
@@ -17,8 +18,11 @@ export class TasksService {
         return this.taskrepository.getTasks(filterDto, user);
     }
 
-    async getTaskById(id: number): Promise<Task> {
-        const found = await this.taskrepository.findOne(id);
+    async getTaskById(
+        id: number,
+        user: User
+    ): Promise<Task> {
+        const found = await this.taskrepository.findOne({ where: { id, userId: user.id } });
         if (!found) {
             throw new NotFoundException(`Task with ${id} not found!`);
         }
@@ -29,16 +33,18 @@ export class TasksService {
         return this.taskrepository.createTask(createTaskDto, user);
     }
    
-    async deleteTask(id: number): Promise<void> {
-        const found = await this.taskrepository.delete(id);
+    async deleteTask(
+        id: number,
+        user: User): Promise<void> {
+        const found = await this.taskrepository.delete({id, userId: user.id});
         if (found.affected === 0) {
             throw new NotFoundException(`Task with ${id} not found!`);
         }
     }
 
-    async updateTaskStatus(id: number, status: TaskStatus): Promise<Task> {
+    async updateTaskStatus(id: number, status: TaskStatus, user: User): Promise<Task> {
         console.log(`Task number ${id} status ${status}`);
-        const task = await this.getTaskById(id);
+        const task = await this.getTaskById(id, user);
         task.status = status;
         await task.save();
         return task;
