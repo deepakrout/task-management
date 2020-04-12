@@ -7,7 +7,7 @@ import { User } from "src/auth/user.entity";
 
 /**
  * Task repository to handle low level taks CRUD operations
- * Date: 04/06/2020
+ * Date: 04/11/2020
  */
 @EntityRepository(Task)
 export class TaskRepository extends Repository<Task> {
