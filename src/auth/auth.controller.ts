@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 
 /**
  * Auth Controller
- * Date: 03/20/2020
+ * Date: 04/13/2020
  */
 @Controller('auth')
 export class AuthController {
