@@ -8,7 +8,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './jwt.strategy';
 
 /**
- * Auth module 04/17/2020
+ * Auth module 04/23/2020
  */
 @Module({
   imports:[
