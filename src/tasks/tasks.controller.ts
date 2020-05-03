@@ -8,7 +8,10 @@ import { TaskStatus } from './task-status.enum';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from 'src/auth/user.entity';
 import { GetUser } from 'src/auth/get-user.decorator';
-
+/**
+ * Task controller
+ * DateL 05/02/2020
+ */
 @Controller('tasks')
 @UseGuards(AuthGuard())
 export class TasksController {
