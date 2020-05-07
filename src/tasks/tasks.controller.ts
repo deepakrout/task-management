@@ -10,7 +10,7 @@ import { User } from 'src/auth/user.entity';
 import { GetUser } from 'src/auth/get-user.decorator';
 /**
  * Task controller
- * DateL 05/02/2020
+ * DateL 05/06/2020
  */
 @Controller('tasks')
 @UseGuards(AuthGuard())
