@@ -2,7 +2,7 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 't
 import { TaskStatus } from './task-status.enum';
 import { User } from 'src/auth/user.entity';
 /**
- * Task Entity 04/23/2020
+ * Task Entity 05/06/2020
  */
 @Entity()
 export class Task extends BaseEntity {
