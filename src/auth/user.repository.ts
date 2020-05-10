@@ -5,7 +5,7 @@ import { ConflictException, InternalServerErrorException } from "@nestjs/common"
 import * as bcrypt from 'bcrypt';
 /**
  * User repository 
- * Date: 04/23/2020
+ * Date: 05/09/2020
  */
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
